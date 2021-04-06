@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:gradient_bottom_navigation_bar/gradient_bottom_navigation_bar.dart';
-
+import 'image_text.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,7 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.yellow,
         title: Text(
           '복잡한 UI',
           style: TextStyle(color: Colors.black),
@@ -52,9 +51,9 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: true,
       ),
       body: _pages[_index],
+      backgroundColor: Colors.yellow[50],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.orange,
-
+        backgroundColor: Colors.yellow[200],
         onTap: (index) {
           setState(() {
             _index = index;
@@ -110,48 +109,10 @@ class _Page1State extends State<Page1> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            GestureDetector(
-              onTap: () {
-                print('클릭');
-                _showDialog();
-              },
-              child: Column(children: [
-                Image.network(
-                  'https://image.flaticon.com/icons/png/512/89/89131.png',
-                  width: 80,
-                  height: 80,
-                  fit: BoxFit.cover,
-                ),
-                Text('택시'),
-              ]),
-            ),
-            Column(children: [
-              Image.network(
-                'https://image.flaticon.com/icons/png/512/89/89131.png',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              Text('택시'),
-            ]),
-            Column(children: [
-              Image.network(
-                'https://image.flaticon.com/icons/png/512/89/89131.png',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              Text('택시'),
-            ]),
-            Column(children: [
-              Image.network(
-                'https://image.flaticon.com/icons/png/512/89/89131.png',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              Text('택시'),
-            ]),
+            ImageText('https://cdn.iconscout.com/icon/premium/png-512-thumb/oncoming-taxy-1801443-1530612.png', '택시'),
+            ImageText('https://en.pimg.jp/040/293/459/1/40293459.jpg', '버스'),
+            ImageText('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6ZqSiVygFJBA-cuypfrJeLE6ugjNDZb02JA&usqp=CAU', '전철'),
+            ImageText('https://i1.wp.com/www.ulsanonline.com/wp-content/uploads/2019/02/Screenshot-2019-02-10-13.17.39.png?resize=482%2C462', '코레일'),
           ],
         ),
         SizedBox(
@@ -160,51 +121,12 @@ class _Page1State extends State<Page1> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            GestureDetector(
-              onTap: () {
-                print('클릭');
-              },
-              child: Column(children: [
-                Image.network(
-                  'https://image.flaticon.com/icons/png/512/89/89131.png',
-                  width: 80,
-                  height: 80,
-                  fit: BoxFit.cover,
-                ),
-                Text('택시'),
-              ]),
-            ),
-            Column(children: [
-              Image.network(
-                'https://image.flaticon.com/icons/png/512/89/89131.png',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              Text('택시'),
-            ]),
-            Column(children: [
-              Image.network(
-                'https://image.flaticon.com/icons/png/512/89/89131.png',
-                width: 80,
-                height: 80,
-                fit: BoxFit.cover,
-              ),
-              Text('택시'),
-            ]),
-            Opacity(
-              opacity: 0.0,
-              child: Column(
-                children: [
-                  Image.network(
-                    'https://image.flaticon.com/icons/png/512/89/89131.png',
-                    width: 80,
-                    height: 80,
-                    fit: BoxFit.cover,
-                  ),
-                  Text('택시'),
-                ],
-              ),
+            ImageText('https://cdn0.iconfinder.com/data/icons/real-estate-bold-4-1/256/Smart_Mobility-512.png', 'Smart택시'),
+            ImageText('https://cdn0.iconfinder.com/data/icons/real-estate-bold-4-1/256/Smart_Mobility-512.png', 'Smart택시2'),
+            ImageText('https://cdn0.iconfinder.com/data/icons/real-estate-bold-4-1/256/Smart_Mobility-512.png', 'Smart택시3'),
+            SizedBox(
+              width: 80,
+              height: 80,
             ),
           ],
         ),
@@ -251,8 +173,8 @@ class _Page1State extends State<Page1> {
     });
 
     return ListView(
-      physics: NeverScrollableScrollPhysics(),  // 이 리스트의 스크롤 동작금지
-      shrinkWrap: true,   // 이 리스트가 다른 스크롤 객체 안에 있다면 true로 설정해야함
+      physics: NeverScrollableScrollPhysics(), // 이 리스트의 스크롤 동작금지
+      shrinkWrap: true, // 이 리스트가 다른 스크롤 객체 안에 있다면 true로 설정해야함
       children: items,
     );
   }
