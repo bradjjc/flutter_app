@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_project_app/4/5/vehicle.dart';
+import 'package:flutter/material.dart'; // 기본
+import 'package:carousel_slider/carousel_slider.dart'; // middle에 있는 슬라이더
+import 'package:flutter_project_app/4/5/vehicle.dart'; // class다른폴더
 import 'image_text.dart';
 import 'vehicle.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyApp());   // main은 runApp을 실행
 
 class MyApp extends StatelessWidget {
   @override
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red, // 현제페이지 누르는것색상
       ),
       home: MyHomePage(),
     );
@@ -33,11 +33,11 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { // 제일상단
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow,
-        title: Text(
+        backgroundColor: Colors.yellow, //색상
+       title: Text(
           '카카오 T',
           style: TextStyle(color: Colors.black),
         ),
@@ -45,18 +45,18 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(
               Icons.add,
-              color: Colors.black,
+              color: Colors.white, // 상단 플러스버튼
             ),
-            onPressed: () {},
+            onPressed: () {}, // 누를수있게
           ),
         ],
-        centerTitle: true,
+        centerTitle: true,  // 제목 가운데로
       ),
-      body: _pages[_index],
-      backgroundColor: Colors.yellow[50],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.yellow[200],
-        onTap: (index) {
+      body: _pages[_index],  // 하단부분 페이지 넘김
+      backgroundColor: Colors.yellow[50],  // 중단 색상
+      bottomNavigationBar: BottomNavigationBar(  // 하단부분
+        backgroundColor: Colors.yellow[200],  //하단부분 색상
+        onTap: (index) {  // 누를수있
           setState(() {
             _index = index;
           });
@@ -87,7 +87,7 @@ class Page1 extends StatefulWidget {
 }
 
 class _Page1State extends State<Page1> {
-  final vehicles = [
+  final vehicles = [  // 사진,이름
     Vehicle(
         'https://cdn.iconscout.com/icon/premium/png-512-thumb/oncoming-taxy-1801443-1530612.png',
         '택시'),
@@ -100,7 +100,7 @@ class _Page1State extends State<Page1> {
         'https://i1.wp.com/www.ulsanonline.com/wp-content/uploads/2019/02/Screenshot-2019-02-10-13.17.39.png?resize=482%2C462',
         '코레일')
   ];
-  final dummyItems = [
+  final dummyItems = [ // 사진들
     'https://www.topdaily.kr/news/photo/202008/73063_40289_292.jpg',
     'https://spnimage.edaily.co.kr/images/photo/files/NP/S/2020/10/PS20100800026.jpg',
     'https://upload.wikimedia.org/wikipedia/commons/4/4a/191215_tvN_%EC%A6%90%EA%B1%B0%EC%9B%80%EC%A0%84_%ED%98%B8%ED%85%94%EB%8D%B8%EB%A3%A8%EB%82%98_%ED%86%A0%ED%81%AC%EC%84%B8%EC%85%98_%EC%95%84%EC%9D%B4%EC%9C%A0_%286%29.jpg',
@@ -109,7 +109,7 @@ class _Page1State extends State<Page1> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return ListView(    // Column을 ListView로 변경하여 상하 스크롤이 생김
       children: <Widget>[
         _buildTop(),
         _buildMiddle(),
@@ -155,19 +155,19 @@ class _Page1State extends State<Page1> {
   Widget _buildMiddle() {
     return CarouselSlider(
       options: CarouselOptions(
-        height: 350.0,
+        height: 350.0,    // 높이
         autoPlay: true,
-        aspectRatio: 2.0,
+        aspectRatio: 1.0,  //이미지 여백
         enlargeCenterPage: true,
-      ), // 높이 400
-      items: dummyItems.map((url) {
+      ),
+      items: dummyItems.map((url) {   // url에서 한장씩 빼온다
         // 5페이지
         return Builder(
           builder: (BuildContext context) {
             //context사용
             return Container(
-              width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 5.0),
+              width: MediaQuery.of(context).size.width, // 기기의 가로 길이
+              margin: EdgeInsets.symmetric(horizontal: 5.0), // 좌우여백 5
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
                 child: Image.network(
@@ -182,11 +182,11 @@ class _Page1State extends State<Page1> {
     );
   }
 
-  Widget _buildBottom() {
-    final items = List.generate(10, (i) {
+  Widget _buildBottom() {   // 하단부분
+    final items = List.generate(10, (i) {   // 10개의 '[이벤트] 이것은 공지사항입니다' print
       return ListTile(
         leading: Icon(Icons.notifications_none),
-        title: Text('[이벤트] 이것은 공지사항입니다'),
+        title: Text('[이벤트] 이것은 공지사항입니다'), // 공지사항
       );
     });
 

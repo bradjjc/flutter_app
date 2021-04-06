@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(MyApp()); // MyApp을 실행
 
 class MyApp extends StatelessWidget {
   @override
@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown, // 상단 색상
       ),
       home: BmiMain(),
     );
@@ -23,15 +23,14 @@ class BmiMain extends StatefulWidget {
 }
 
 class _BmiMainState extends State<BmiMain> {
+  final _formKey = GlobalKey<FormState>(); // 폼의 상태를 얻기위한 키
 
-  final _formKey = GlobalKey<FormState>();
-
-  final _heightController = TextEditingController();
+  final _heightController = TextEditingController();  //입력 준비
   final _weightController = TextEditingController();
 
   @override
-  void dispose(){
-    _heightController.dispose();
+  void dispose() {
+    _heightController.dispose();    // 사용한 컨트롤러와 인스턴스는 화면이종료될때 반드시 dispose로 해제
     _weightController.dispose();
     super.dispose();
   }
@@ -42,20 +41,20 @@ class _BmiMainState extends State<BmiMain> {
       appBar: AppBar(title: Text('비만도 계산기')),
       body: Container(
         padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
+        child: Form(      // 키와몸무게를 받는 양식 전채를 form으로 감싼다
+          key: _formKey,  // 키할당
           child: Column(
             children: <Widget>[
               TextFormField(
-                decoration: InputDecoration(
+                decoration: InputDecoration(    // 클래스를설정 외곽선,힌트 등을 설정
                   border: OutlineInputBorder(),
                   hintText: '키',
                 ),
-                controller: _heightController,
-                keyboardType: TextInputType.number,
-                validator: (value){
-                  if (value.trim().isEmpty){
-                    return '키를 입력하세요';
+                controller: _heightController,    // TextEditingController 인스턴스를 설정, 텍스트 필드를 소작할때 사용
+                keyboardType: TextInputType.number,   // 입력타입을 제한
+                validator: (value) {          // 입력값을 검증하고 에러메세지를 반환하도록 작성, 에러가없을경우 null을 반환
+                  if (value.trim().isEmpty) {   //입력된값을 검증
+                    return '키를 입력하세요';    // 에러메세지
                   }
                   return null;
                 },
@@ -70,8 +69,8 @@ class _BmiMainState extends State<BmiMain> {
                 ),
                 controller: _weightController,
                 keyboardType: TextInputType.number,
-                validator: (value){
-                  if (value.trim().isEmpty){
+                validator: (value) {
+                  if (value.trim().isEmpty) {
                     return '몸무게를 입력하세요';
                   }
                   return null;
@@ -83,12 +82,13 @@ class _BmiMainState extends State<BmiMain> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
+                      // 키와 몸무계 값이 검증되었다면 화면이동
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BmiResult(
-                          double.parse(_heightController.text.trim()),
-                    double.parse(_weightController.text.trim()))),
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BmiResult(
+                                double.parse(_heightController.text.trim()),      // 입력된문자열을 double타입으로 변환
+                                double.parse(_weightController.text.trim()))),
                       );
                     }
                   },
@@ -107,12 +107,12 @@ class BmiResult extends StatelessWidget {
   final double height;
   final double weight;
 
-  BmiResult(this.height, this.weight);
+  BmiResult(this.height, this.weight);  // 키와몸무게르 생성자
 
   @override
   Widget build(BuildContext context) {
-    final bmi = weight / ((height / 100) * (height / 100));
-    print('bmi : $bmi');
+    final bmi = weight / ((height / 100) * (height / 100)); // BMI 값
+    print('bmi : $bmi'); // 함수로 계산된 BMI값을 미리 확인할수있음
 
     return Scaffold(
       appBar: AppBar(title: Text('비만도 계산기')),
@@ -121,13 +121,13 @@ class BmiResult extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              _calcBmi(bmi),
+              _calcBmi(bmi), // 계산 결과에 따른 결과 문자열
               style: TextStyle(fontSize: 36),
             ),
             SizedBox(
               height: 16,
             ),
-            _buildIcon(bmi),
+            _buildIcon(bmi), // 결과에 따른 icon
           ],
         ),
       ),
@@ -172,4 +172,3 @@ class BmiResult extends StatelessWidget {
     }
   }
 }
-
