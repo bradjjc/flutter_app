@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_project_app/4/5/vehicle.dart';
 import 'image_text.dart';
+import 'vehicle.dart';
 
 void main() => runApp(MyApp());
 
@@ -36,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.yellow,
         title: Text(
-          '복잡한 UI',
+          '카카오 T',
           style: TextStyle(color: Colors.black),
         ),
         actions: <Widget>[
@@ -85,6 +87,19 @@ class Page1 extends StatefulWidget {
 }
 
 class _Page1State extends State<Page1> {
+  final vehicles = [
+    Vehicle(
+        'https://cdn.iconscout.com/icon/premium/png-512-thumb/oncoming-taxy-1801443-1530612.png',
+        '택시'),
+    Vehicle('https://en.pimg.jp/040/293/459/1/40293459.jpg',
+        '버스'),
+    Vehicle(
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6ZqSiVygFJBA-cuypfrJeLE6ugjNDZb02JA&usqp=CAU',
+        '전철'),
+    Vehicle(
+        'https://i1.wp.com/www.ulsanonline.com/wp-content/uploads/2019/02/Screenshot-2019-02-10-13.17.39.png?resize=482%2C462',
+        '코레일')
+  ];
   final dummyItems = [
     'https://www.topdaily.kr/news/photo/202008/73063_40289_292.jpg',
     'https://spnimage.edaily.co.kr/images/photo/files/NP/S/2020/10/PS20100800026.jpg',
@@ -107,13 +122,10 @@ class _Page1State extends State<Page1> {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ImageText('https://cdn.iconscout.com/icon/premium/png-512-thumb/oncoming-taxy-1801443-1530612.png', '택시'),
-            ImageText('https://en.pimg.jp/040/293/459/1/40293459.jpg', '버스'),
-            ImageText('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6ZqSiVygFJBA-cuypfrJeLE6ugjNDZb02JA&usqp=CAU', '전철'),
-            ImageText('https://i1.wp.com/www.ulsanonline.com/wp-content/uploads/2019/02/Screenshot-2019-02-10-13.17.39.png?resize=482%2C462', '코레일'),
-          ],
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: vehicles.map((e) {
+            return ImageText(e.imageUrl, e.name);
+          }).toList(),
         ),
         SizedBox(
           height: 20,
@@ -121,9 +133,15 @@ class _Page1State extends State<Page1> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ImageText('https://cdn0.iconfinder.com/data/icons/real-estate-bold-4-1/256/Smart_Mobility-512.png', 'Smart택시'),
-            ImageText('https://cdn0.iconfinder.com/data/icons/real-estate-bold-4-1/256/Smart_Mobility-512.png', 'Smart택시2'),
-            ImageText('https://cdn0.iconfinder.com/data/icons/real-estate-bold-4-1/256/Smart_Mobility-512.png', 'Smart택시3'),
+            ImageText(
+                'https://cdn0.iconfinder.com/data/icons/real-estate-bold-4-1/256/Smart_Mobility-512.png',
+                'Smart택시'),
+            ImageText(
+                'https://cdn0.iconfinder.com/data/icons/real-estate-bold-4-1/256/Smart_Mobility-512.png',
+                'Smart택시2'),
+            ImageText(
+                'https://cdn0.iconfinder.com/data/icons/real-estate-bold-4-1/256/Smart_Mobility-512.png',
+                'Smart택시3'),
             SizedBox(
               width: 80,
               height: 80,
