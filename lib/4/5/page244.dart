@@ -66,8 +66,6 @@ class _BmiMainState extends State<BmiMain> {
                 height: 10.0,
               ),
               TextFormField(
-                cursorHeight: 30.0,
-                cursorColor: Colors.red,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: '몸무게',
