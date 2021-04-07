@@ -40,12 +40,15 @@ class _BmiMainState extends State<BmiMain> {
     return Scaffold(
       appBar: AppBar(title: Text('비만도 계산기')),
       body: Container(
+        color: Colors.yellow[50],
         padding: const EdgeInsets.all(16.0),
         child: Form(      // 키와몸무게를 받는 양식 전채를 form으로 감싼다
           key: _formKey,  // 키할당
           child: Column(
             children: <Widget>[
               TextFormField(
+                cursorHeight: 30.0,
+                cursorColor: Colors.red,
                 decoration: InputDecoration(    // 클래스를설정 외곽선,힌트 등을 설정
                   border: OutlineInputBorder(),
                   hintText: '키',
@@ -60,9 +63,11 @@ class _BmiMainState extends State<BmiMain> {
                 },
               ),
               SizedBox(
-                height: 16.0,
+                height: 10.0,
               ),
               TextFormField(
+                cursorHeight: 30.0,
+                cursorColor: Colors.red,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: '몸무게',
@@ -77,7 +82,7 @@ class _BmiMainState extends State<BmiMain> {
                 },
               ),
               Container(
-                margin: const EdgeInsets.only(top: 16.0),
+                margin: const EdgeInsets.only(top: 15.0),
                 alignment: Alignment.centerRight,
                 child: ElevatedButton(
                   onPressed: () {

@@ -30,6 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   carousel_slider: ^3.0.0
   gradient_bottom_navigation_bar: ^1.0.0+4
+  pin_keyboard: ^0.0.6
 
 dev_dependencies:
   flutter_test:

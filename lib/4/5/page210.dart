@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_slider.dart'; // middle에 있는 슬�
 import 'package:flutter_project_app/4/5/vehicle.dart'; // class다른폴더
 import 'image_text.dart';
 import 'vehicle.dart';
+import 'package:pin_keyboard/pin_keyboard.dart';
 
 void main() => runApp(MyApp());   // main은 runApp을 실행
 
