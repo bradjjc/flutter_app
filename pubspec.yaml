@@ -31,6 +31,7 @@ dependencies:
   carousel_slider: ^3.0.0
   gradient_bottom_navigation_bar: ^1.0.0+4
   pin_keyboard: ^0.0.6
+  cloud_firestore: ^1.0.4
 
 dev_dependencies:
   flutter_test:
